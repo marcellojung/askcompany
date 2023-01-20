@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 class Post(models.Model):
     message = models.TextField()
+    is_public = models.BooleanField(default=False,verbose_name='공개여부') #새로운 필드 추가하였음. makemigrtions, migrate 다 해줘야. 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
