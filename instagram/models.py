@@ -11,6 +11,8 @@ class Post(models.Model):
     def __str__(self):
         return f"Custom Post Object ({self.id},{self.message})"
     
+    class Meta:
+        ordering=['-id']
 
     def message_length(self):
         return len(self.message)
