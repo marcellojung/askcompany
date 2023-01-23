@@ -14,7 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf.urls.static import static #static 
 from django.urls import path,include
+from django.conf import settings ##django가 global_settings와 app의 settings를 합쳐줌. 
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,3 +25,8 @@ urlpatterns = [
     path('instagram/', include('instagram.urls')),
     
 ]
+if settings.DEBUG:  #debug 상태일때만 미디어 파일 루트를 지정해줌. http://127.0.0.1:8000/media/Cyan.png
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+# settings.MEDIA_URL
+# settings.MEDIA_ROOT
