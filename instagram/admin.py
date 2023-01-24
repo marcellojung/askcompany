@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Comment
 from django.utils.safestring import mark_safe  #안전하다. 자동 import 필요 
 # Register your models here.
 
@@ -18,3 +18,10 @@ class PostAdmin(admin.ModelAdmin):
             # post.photo.url '
             return mark_safe(f'<img src="{post.photo.url}" styles="width: 36px;"/>')  #photo가 있다면 img url을 리턴하라. 
         return None
+    
+    
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    pass
+
+ 
